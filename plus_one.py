@@ -64,13 +64,12 @@ while True:
                                     reddit.subreddit(sub_name).flair.set(top_level_comment.author, new_flair)
                                 else:
                                     new_flair = str(int(top_level_comment.author_flair_text[17:]) + 1)
-                                    new_flair = str(int(top_level_comment.author_flair_text[17:]) + 1)
                                     new_flair = "Quality Poster 👍 " + new_flair
                                     reddit.subreddit(sub_name).flair.set(top_level_comment.author, new_flair)
 
                                 # Add a comment to mark the submission task complete
 
-                                second_level_comment.reply("Thank you for picking the best recommendation.")
+                                second_level_comment.reply("You've successfully awarded a user one 'good taste point'. Thanks for getting back with them!")
 
 
     # Take a nap
