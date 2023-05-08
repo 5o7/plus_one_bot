@@ -25,10 +25,13 @@ sub_name = "xxxxxxxxxxxxxxxx"
 # The following code runs once every 15 minutes
 
 while True:
+         
+    # Get the newest 50 submissions
+
     for submission in reddit.subreddit(sub_name).new(limit=50):
         submission.comments.replace_more(limit=None)
 
-        # Safeguard to avoid spamming
+        # Only give out one point per submission
 
         comments = submission.comments.list()
         task_complete = False
@@ -40,7 +43,7 @@ while True:
             except:
                 pass
 
-        # Scan second level comments for "solved"
+        # Scan second level comments for "good rec" or something similar
 
         if not task_complete:
             for top_level_comment in submission.comments:
@@ -50,7 +53,7 @@ while True:
                             if good_recs[i] in second_level_comment.body.lower():
 
                                 # We have a winner. Top comment author's flair has 4 conditions
-                                # Add one point the the top level comment author
+                                # Add one point to the the top level comment author
 
                                 if top_level_comment.author_flair_text == None:
                                     reddit.subreddit(sub_name).flair.set(top_level_comment.author, "1")
