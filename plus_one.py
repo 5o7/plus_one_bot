@@ -60,7 +60,7 @@ while True:
                                 elif top_level_comment.author_flair_text == "Quality Poster 👍":
                                     reddit.subreddit(sub_name).flair.set(top_level_comment.author, "Quality Poster 👍 1")
                                 elif len(top_level_comment.author_flair_text) < 5:
-                                    new_flair = str(int(comment.author_flair_text) + 1)
+                                    new_flair = str(int(top_level_comment.author_flair_text) + 1)
                                     reddit.subreddit(sub_name).flair.set(top_level_comment.author, new_flair)
                                 else:
                                     new_flair = str(int(top_level_comment.author_flair_text[17:]) + 1)
